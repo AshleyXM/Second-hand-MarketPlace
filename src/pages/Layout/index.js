@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.scss";
+import logo from "@/assets/logo.png";
 import { Layout as AntdLayout, Menu, Popconfirm, Space } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -57,7 +58,7 @@ const Layout = () => {
   return (
     <AntdLayout className="ant-layout">
       <Header className="layout-header">
-        <img className="logo" src="/logo.png" alt="" />
+        <img className="logo" src={logo} alt="" />
         <span className="title">Second-hand Marketplace</span>
         <span className="user-info">
           <Space>
