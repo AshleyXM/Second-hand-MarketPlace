@@ -1,6 +1,6 @@
 import "./index.scss";
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Space, Card } from "antd";
+import { Button, Form, Input, Space, Card, Modal } from "antd";
 import { PlusCircleOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { getAllProductsAPI } from "@/apis/product";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +31,14 @@ const Home = () => {
     navigate(`/${productId}`);
   };
 
-  const handlePurchase = () => {};
+  const handlePurchase = (name) => {
+    Modal.confirm({
+      title: `Confirm to buy this ${name}?`,
+      okText: "Confirm",
+      cancelText: "Cancel",
+      onOk: () => {},
+    });
+  };
   return (
     <>
       <Form form={form} layout="inline" onFinish={onFinish}>
@@ -66,7 +73,10 @@ const Home = () => {
                   key="detail"
                   onClick={() => handleInfoCheck(item.id)}
                 />,
-                <PlusCircleOutlined key="purchase" onClick={handlePurchase} />,
+                <PlusCircleOutlined
+                  key="purchase"
+                  onClick={() => handlePurchase(item.name)}
+                />,
               ]}
             >
               <Meta title={item.name} description={item.description} />
