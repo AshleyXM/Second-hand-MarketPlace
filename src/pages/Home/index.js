@@ -1,5 +1,5 @@
 import "./index.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Space, Card } from "antd";
 import { PlusCircleOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { getAllProductsAPI } from "@/apis/product";

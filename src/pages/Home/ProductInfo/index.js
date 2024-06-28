@@ -10,10 +10,12 @@ const ProductInfo = () => {
   const productId = params.id;
 
   const [productInfo, setProductInfo] = useState({});
+  const [loading, setLoading] = useState(true);
 
   async function fetchProduct() {
     const { data } = await getProductInfoAPI(productId);
     setProductInfo(data);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -56,6 +58,15 @@ const ProductInfo = () => {
       children: `${productInfo.description}`,
     },
   ];
+
+  if (loading) {
+    return (
+      <div className="loading-wrapper">
+        <div className="loading"></div>
+        <div className="loading-text">loading...</div>
+      </div>
+    );
+  }
 
   return (
     <Descriptions
