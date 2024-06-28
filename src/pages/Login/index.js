@@ -39,7 +39,7 @@ const Login = () => {
               },
             ]}
           >
-            <Input size="large" placeholder="Enter password" />
+            <Input.Password size="large" placeholder="Enter password" />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" size="large" block>
