@@ -1,6 +1,7 @@
 import Layout from "@/pages/Layout";
 import Login from "@/pages/Login";
 import Home from "@/pages/Home";
+import ProductInfo from "@/pages/Home/ProductInfo";
 import Post from "@/pages/Post";
 import AddPost from "@/pages/Post/AddPost";
 import Transaction from "@/pages/Transaction";
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: ":id",
+        element: <ProductInfo />,
       },
       {
         path: "post",
