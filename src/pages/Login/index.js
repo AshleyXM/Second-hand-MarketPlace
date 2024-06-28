@@ -20,12 +20,14 @@ const Login = () => {
         <Form onFinish={onFinish}>
           <Form.Item
             name="username"
+            label="Username:"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input size="large" placeholder="Enter username" />
           </Form.Item>
           <Form.Item
             name="password"
+            label="Password"
             rules={[
               {
                 required: true,
