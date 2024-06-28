@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "./token";
 
 const request = axios.create({
   baseURL: "https://mock.apipark.cn/m1/4734263-4386891-default",
@@ -7,6 +8,10 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
+    const token = getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {
