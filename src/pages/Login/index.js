@@ -4,13 +4,17 @@ import logo from "@/assets/logo.png";
 import { setToken } from "@/utils/token";
 import { loginAPI } from "@/apis/user";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "@/store/modules/user";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = async (formData) => {
     const res = await loginAPI(formData);
-    setToken(res.data.token);
+    setToken(res.token);
     navigate("/");
+    dispatch(setUserInfo(res.data.user));
   };
   return (
     <div className="login">

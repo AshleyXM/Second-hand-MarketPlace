@@ -4,6 +4,9 @@ import logo from "@/assets/logo.png";
 import { Layout as AntdLayout, Menu, Popconfirm, Space } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { removeToken } from "@/utils/token";
+import { useSelector } from "react-redux";
+
 const { Header, Content, Sider } = AntdLayout;
 
 const MENU_ITEMS = [
@@ -47,13 +50,18 @@ const Layout = () => {
   const location = useLocation();
   const selectedKey = location.pathname; // used to highlight the key when being accessed via url
 
+  const username = useSelector((state) => state.user.userInfo.username);
+
   const navigate = useNavigate();
   const handleMenuClick = (route) => {
     const path = route.key;
     navigate(path);
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    removeToken();
+    navigate("/login");
+  };
 
   return (
     <AntdLayout className="ant-layout">
@@ -62,7 +70,7 @@ const Layout = () => {
         <span className="title">Second-hand Marketplace</span>
         <span className="user-info">
           <Space>
-            <span className="user-name">username</span>
+            <span className="user-name">{username || "username"}</span>
             <span className="user-logout">
               <Popconfirm
                 title="Confirm to exit?"
