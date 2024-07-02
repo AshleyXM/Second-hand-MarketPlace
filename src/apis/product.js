@@ -7,6 +7,14 @@ export function getAllProductsAPI() {
   });
 }
 
+export function createProductAPI(formData) {
+  return request({
+    url: `/api/products`,
+    method: "POST",
+    data: formData,
+  });
+}
+
 export function getProductInfoAPI(productId) {
   return request({
     url: `/api/products/${productId}`,

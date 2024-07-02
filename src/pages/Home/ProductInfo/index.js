@@ -12,16 +12,15 @@ const ProductInfo = () => {
   const [productInfo, setProductInfo] = useState({});
   const [loading, setLoading] = useState(true);
 
-  async function fetchProduct() {
-    const { data } = await getProductInfoAPI(productId);
-    setProductInfo(data);
-    setLoading(false);
-  }
-
   useEffect(() => {
+    async function fetchProduct() {
+      const { data } = await getProductInfoAPI(productId);
+      setProductInfo(data);
+      setLoading(false);
+    }
     // get product details
     fetchProduct();
-  }, []);
+  }, [productId]);
 
   const items = [
     {

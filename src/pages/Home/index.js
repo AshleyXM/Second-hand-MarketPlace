@@ -1,5 +1,5 @@
 import "./index.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Form, Input, Space, Card, Modal } from "antd";
 import { PlusCircleOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { getAllProductsAPI } from "@/apis/product";
@@ -16,14 +16,13 @@ const Home = () => {
 
   const productList = useSelector((state) => state.product.productList);
 
-  async function fetchProducts() {
-    const res = await getAllProductsAPI();
-    dispatch(setProductList(res.data));
-  }
-
   useEffect(() => {
+    async function fetchProducts() {
+      const res = await getAllProductsAPI();
+      dispatch(setProductList(res.data));
+    }
     fetchProducts();
-  }, []);
+  }, [dispatch]);
 
   const onFinish = () => {};
 

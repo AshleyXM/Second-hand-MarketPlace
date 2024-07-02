@@ -1,8 +1,10 @@
 import axios from "axios";
 import { getToken } from "./token";
 
+import { BASE_URL } from "@/constants";
+
 const request = axios.create({
-  baseURL: "https://mock.apipark.cn/m1/4734263-4386891-default",
+  baseURL: BASE_URL,
   timeout: 5000,
 });
 
