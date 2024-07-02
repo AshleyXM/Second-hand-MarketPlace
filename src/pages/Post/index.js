@@ -1,7 +1,7 @@
 import { getAllProductsAPI } from "@/apis/product";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Table, Button, Tooltip, Tag, Image } from "antd";
+import { Table, Button, Tooltip, Tag, Image, Spin } from "antd";
 import dayjs from "dayjs";
 
 import "./index.scss";
@@ -96,24 +96,29 @@ const COLUMNS = [
 const Post = () => {
   const userId = useSelector((state) => state.user.userInfo.id);
   const [dataSource, setDataSource] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchPosts() {
       const res = await getAllProductsAPI(userId);
       setDataSource(res.data);
+      setLoading(false);
     }
 
     fetchPosts();
   }, [userId]);
+
   return (
-    <Table
-      className="table"
-      columns={COLUMNS}
-      dataSource={dataSource}
-      scroll={{
-        x: 1300,
-      }}
-    />
+    <Spin tip="Loading..." size="large" spinning={loading}>
+      <Table
+        className="table"
+        columns={COLUMNS}
+        dataSource={dataSource}
+        scroll={{
+          x: 1300,
+        }}
+      />
+    </Spin>
   );
 };
 
