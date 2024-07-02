@@ -26,19 +26,19 @@ const ProductInfo = () => {
     {
       key: "name",
       label: "Name",
-      children: `${productInfo.name}`,
+      children: productInfo.name,
       span: 2,
     },
     {
       key: "price",
       label: "Price",
-      children: `$${productInfo.price?.toFixed(2)}`,
+      children: productInfo.price?.toFixed(2),
       span: 2,
     },
     {
       key: "category",
       label: "Category",
-      children: `${productInfo.category}`,
+      children: productInfo.category,
       span: 2,
     },
 
@@ -69,7 +69,7 @@ const ProductInfo = () => {
     {
       key: "description",
       label: "Description",
-      children: `${productInfo.description}`,
+      children: productInfo.description,
     },
   ];
 
