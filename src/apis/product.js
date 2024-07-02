@@ -1,8 +1,8 @@
 import { request } from "@/utils";
 
-export function getAllProductsAPI() {
+export function getAllProductsAPI(userId) {
   return request({
-    url: "/api/products",
+    url: `/api/products?user=${userId}`,
     method: "GET",
   });
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, Descriptions } from "antd";
+import { Image, Descriptions, Tag } from "antd";
 import { getProductInfoAPI } from "@/apis/product";
 import { useParams } from "react-router-dom";
 
@@ -27,16 +27,31 @@ const ProductInfo = () => {
       key: "name",
       label: "Name",
       children: `${productInfo.name}`,
+      span: 2,
     },
     {
       key: "price",
       label: "Price",
       children: `$${productInfo.price?.toFixed(2)}`,
+      span: 2,
     },
     {
       key: "category",
       label: "Category",
       children: `${productInfo.category}`,
+      span: 2,
+    },
+
+    {
+      key: "condition",
+      label: "Condition",
+      children:
+        productInfo.condition !== "new" ? (
+          <Tag color="success">New</Tag>
+        ) : (
+          <Tag color="warning">Used</Tag>
+        ),
+      span: 2,
     },
     {
       key: "image",
@@ -49,7 +64,7 @@ const ProductInfo = () => {
           height={300}
         />
       ),
-      span: 3,
+      span: 4,
     },
     {
       key: "description",

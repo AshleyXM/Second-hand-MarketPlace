@@ -31,11 +31,6 @@ const AddPost = () => {
   const navigate = useNavigate();
   const [imageList, setImageList] = useState([]);
   const handleChange = (values) => {
-    console.log(
-      "%c [ values ] - row 21: ",
-      "background-color: #3756d4; padding: 4px 8px; border-radius: 2px; font-size: 14px; color: #fff; font-weight: 700;",
-      values
-    );
     setImageList(values.fileList);
   };
 
@@ -45,11 +40,6 @@ const AddPost = () => {
       images: imageList.map((image) => image.response.data.url),
     };
     await createProductAPI(reqData);
-    console.log(
-      "%c [ reqData ] - row 47: ",
-      "background-color: #3756d4; padding: 4px 8px; border-radius: 2px; font-size: 14px; color: #fff; font-weight: 700;",
-      reqData
-    );
     message.success("Product posted successfully!");
     navigate("/");
   };
